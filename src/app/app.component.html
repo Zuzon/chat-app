@@ -1,0 +1,5 @@
+<span *ngIf="service.connection?.ws.readyState === 3 || !service.connection">disconnected</span>
+<span *ngIf="service.connection?.ws.readyState === 2">disconnecting</span>
+<span *ngIf="service.connection?.ws.readyState === 1">connected</span>
+<span *ngIf="service.connection?.ws.readyState === 0">connecting</span>
+<router-outlet></router-outlet>

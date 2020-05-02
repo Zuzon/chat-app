@@ -1,0 +1,24 @@
+
+<div class="wrap" fxLayout="column" fxLayoutAlign="center center" fxFlex="100%" fxFlex.gt-sm="50%">
+    <div class="messages" fxFlexLayout="column">
+        <div *ngFor="let message of service.messages" class="message" [ngClass]="{'message': true, 'me': message.author === service.name, 'system': message.author === ''}">
+            <div *ngIf="message.author !== service.name" fxFlexLayout="row" fxLayoutAlign="space-between center">
+                <div class="author">{{message.author}}</div>
+                <div class="time">{{message.date | date:'medium'}}</div>
+            </div>
+            <div class="text">{{message.content}}</div>
+        </div>
+    </div>
+    <div class="input" *ngIf="messageForm">
+        <form fxLayout="row" fxLayoutAlign="center" [formGroup]="messageForm" (ngSubmit)="onSubmit(messageForm)">
+            <mat-form-field appearance="fill" fxFill>
+                <input matInput formControlName="message" autocomplete="off" />
+            </mat-form-field>
+            <div class="enter-btn">
+                <button title="Send" type="submit" mat-fab>
+                    Send
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
